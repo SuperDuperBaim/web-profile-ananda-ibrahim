@@ -6,6 +6,11 @@ $tmpDirs = [
     '/tmp/cache',
     '/tmp/sessions',
     '/tmp/logs',
+    '/tmp/storage/framework/views',
+    '/tmp/storage/framework/cache/data',
+    '/tmp/storage/framework/sessions',
+    '/tmp/storage/logs',
+    '/tmp/bootstrap/cache',
 ];
 
 foreach ($tmpDirs as $dir) {

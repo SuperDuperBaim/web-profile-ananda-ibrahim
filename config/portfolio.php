@@ -31,18 +31,22 @@ return [
     'projects' => [
         [
             'name' => 'Kasir UMKM',
+            'title' => 'Kasir UMKM',
             'description' => 'Aplikasi kasir offline-first untuk UMKM — mengelola produk, kategori, pembayaran QRIS dan tunai, serta laporan penjualan.',
             'tech' => ['React', 'SQLite', 'Electron'],
-            'github' => 'https://github.com/ananda',
+            'github' => 'https://github.com/SuperDuperBaim',
             'demo' => null,
+            'link' => null,
             'accent' => 'from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700',
         ],
         [
             'name' => 'Website Portfolio',
+            'title' => 'Website Portfolio',
             'description' => 'Portfolio single-page ini dibangun dengan Laravel, Blade template, Tailwind CSS dengan sidebar navigasi dan smooth scroll.',
             'tech' => ['Laravel', 'Blade', 'Tailwind CSS'],
-            'github' => 'https://github.com/ananda',
+            'github' => 'https://github.com/SuperDuperBaim',
             'demo' => '/',
+            'link' => '/',
             'accent' => 'from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700',
         ],
     ],
@@ -69,7 +73,7 @@ return [
     'contactLinks' => [
         [
             'label' => 'Email',
-            'value' => 'anandaibrahimhs@gm ail.com',
+            'value' => 'anandaibrahimhs@gmail.com',
             'href' => 'mailto:anandaibrahimhs@gmail.com',
             'type' => 'mail',
         ],
