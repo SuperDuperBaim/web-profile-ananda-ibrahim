@@ -100,7 +100,10 @@
     <div class="border-t border-border p-3">
         <div class="flex items-center gap-3 rounded-lg px-3 py-2">
             @if (Auth::user()->avatar)
-                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="h-8 w-8 rounded-full object-cover border border-border shrink-0">
+                @php
+                    $sidebarAvatar = str_starts_with(Auth::user()->avatar, 'http') ? Auth::user()->avatar : asset('storage/' . Auth::user()->avatar);
+                @endphp
+                <img src="{{ $sidebarAvatar }}" alt="{{ Auth::user()->name }}" class="h-8 w-8 rounded-full object-cover border border-border shrink-0">
             @else
                 <div class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-sm font-medium text-foreground shrink-0">
                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}

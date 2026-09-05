@@ -44,20 +44,28 @@ class ProfileController extends Controller
     public function updateAvatar(Request $request): RedirectResponse
     {
         $request->validate([
-            'avatar' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'avatar'     => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'avatar_url' => 'nullable|url|max:1000',
         ]);
 
         $user = $request->user();
 
-        // Hapus avatar lama jika ada
-        if ($user->avatar) {
-            Storage::disk('public')->delete($user->avatar);
+        if ($request->hasFile('avatar')) {
+            // Hapus avatar file lokal lama jika ada
+            if ($user->avatar && !str_starts_with($user->avatar, 'http')) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $path;
+            $user->save();
+        } elseif ($request->filled('avatar_url')) {
+            // Hapus avatar file lokal lama jika diganti URL
+            if ($user->avatar && !str_starts_with($user->avatar, 'http')) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+            $user->avatar = $request->avatar_url;
+            $user->save();
         }
-
-        // Simpan avatar baru
-        $path = $request->file('avatar')->store('avatars', 'public');
-        $user->avatar = $path;
-        $user->save();
 
         return Redirect::route('dashboard')->with('status', 'avatar-updated');
     }

@@ -45,14 +45,23 @@ Route::get('/', function () {
         'projects' => $projects,
         'skillGroups' => config('portfolio.skillGroups'),
         'contactLinks' => config('portfolio.contactLinks'),
+        'avatar' => \App\Models\User::first()?->avatar,
     ]);
 })->middleware(\App\Http\Middleware\TrackVisitor::class);
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         $visitorCount = \App\Models\Visitor::count();
         return view('dashboard', compact('visitorCount'));
     })->name('dashboard');
+
+    Route::get('/dashboard/stats', function () {
+        return response()->json([
+            'visitorCount' => \App\Models\Visitor::count(),
+            'portfolioCount' => \App\Models\Portfolio::count(),
+            'experienceCount' => \App\Models\Experience::count(),
+        ]);
+    })->name('dashboard.stats');
 
     Route::resource('portfolios', PortfolioController::class);
     Route::resource('experiences', ExperienceController::class);

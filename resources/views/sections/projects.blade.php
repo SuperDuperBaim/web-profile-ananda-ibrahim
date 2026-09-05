@@ -14,7 +14,7 @@
                     <!-- Square Project Image / Banner (Compact for 3-col) -->
                     @if (!empty($project->image))
                         <div class="aspect-square w-full overflow-hidden border-b border-border bg-muted">
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="h-full w-full object-cover transition-transform duration-500 hover:scale-105">
+                            <img src="{{ str_starts_with($project->image, 'http') ? $project->image : asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="h-full w-full object-cover transition-transform duration-500 hover:scale-105">
                         </div>
                     @else
                         <div

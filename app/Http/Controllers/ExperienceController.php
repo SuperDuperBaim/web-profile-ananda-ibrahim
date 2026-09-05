@@ -45,6 +45,31 @@ class ExperienceController extends Controller
         return redirect()->route('experiences.index')->with('success', 'Experience berhasil ditambahkan!');
     }
 
+    public function edit(Experience $experience)
+    {
+        return view('experiences.edit', ['experience' => $experience, 'roles' => self::ROLES]);
+    }
+
+    public function update(Request $request, Experience $experience)
+    {
+        $validated = $request->validate([
+            'period'      => 'required|string|max:255',
+            'role'        => 'required|string|in:' . implode(',', self::ROLES),
+            'company'     => 'required|string|max:255',
+            'description' => 'required|string',
+            'tech'        => 'nullable|string',
+        ]);
+
+        if (!empty($validated['tech'])) {
+            $validated['tech'] = array_map('trim', explode(',', $validated['tech']));
+        } else {
+            $validated['tech'] = [];
+        }
+
+        $experience->update($validated);
+        return redirect()->route('experiences.index')->with('success', 'Experience berhasil diperbarui!');
+    }
+
     public function destroy(Experience $experience)
     {
         $experience->delete();

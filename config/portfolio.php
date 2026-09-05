@@ -5,8 +5,8 @@ return [
         'name' => 'Ananda Ibrahim',
         'fullName' => 'Ananda Ibrahim Hilal Syafrudin',
         'title' => 'Web & Mobile Developer',
-        'summary' => 'Mahasiswa Teknologi Informasi di Universitas Darma Persada yang tertarik dalam merancang serta mengembangkan aplikasi web dan mobile.',
-        'intro' => 'Mahasiswa Teknologi Informasi di Universitas Darma Persada yang tertarik dalam merancang serta mengembangkan aplikasi web dan mobile.',
+        'summary' => 'An Information Technology student at Universitas Darma Persada with a strong interest in web and mobile application development.',
+        'intro' => 'An Information Technology student at Universitas Darma Persada with a strong interest in web and mobile application development.',
         'about' => 'Nama saya Ananda Ibrahim Hilal Syafrudin, Mahasiswa S1 Teknologi Informasi di Universitas Darma Persada. Saya tertarik dengan bagaimana teknologi bekerja, pengembangan aplikasi, dan pembuatan produk digital.',
     ],
 
@@ -66,7 +66,7 @@ return [
         ],
         [
             'title' => 'Tools',
-            'skills' => ['Git', 'GitHub', 'VS Code', 'Figma'],
+            'skills' => ['Git', 'GitHub', 'VS Code', 'Figma', 'Android Studio', 'Stitch'],
         ],
     ],
 

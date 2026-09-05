@@ -8,7 +8,7 @@
                 class="reveal text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl"
                 style="--reveal-delay: 80ms;"
             >
-                Halo, Saya {{ $site['name'] }}
+                Hi, I'm {{ $site['name'] }}
             </h1>
             <p
                 class="reveal mt-3 text-base md:text-lg font-medium text-muted-foreground"
@@ -25,8 +25,13 @@
         </div>
 
         <div class="flex-shrink-0 flex items-center justify-center">
+            @php
+                $photoSrc = !empty($avatar) 
+                    ? (str_starts_with($avatar, 'http') ? $avatar : asset('storage/' . $avatar)) 
+                    : asset('profile.jpg');
+            @endphp
             <img
-                src="{{ asset('profile.jpg') }}"
+                src="{{ $photoSrc }}"
                 alt="{{ $site['name'] }}"
                 class="reveal h-48 w-48 sm:h-56 sm:w-56 md:h-60 md:w-60 rounded-full object-cover border border-border/60 shadow-2xl"
                 style="--reveal-delay: 0ms;"
