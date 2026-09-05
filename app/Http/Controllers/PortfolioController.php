@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
+    public const ROLES = [
+        'Frontend Developer',
+        'Backend Developer',
+        'Fullstack Developer',
+        'UI/UX Designer',
+    ];
+
     public function index()
     {
         $portfolios = Portfolio::latest()->get();
@@ -15,16 +22,17 @@ class PortfolioController extends Controller
 
     public function create()
     {
-        return view('portfolios.create');
+        return view('portfolios.create', ['roles' => self::ROLES]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title'       => 'required|string|max:255',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'link' => 'nullable|url',
+            'image'       => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'link'        => 'nullable|url',
+            'role'        => 'nullable|string|in:' . implode(',', self::ROLES),
         ]);
 
         $imagePath = null;
@@ -33,10 +41,11 @@ class PortfolioController extends Controller
         }
 
         Portfolio::create([
-            'title' => $request->title,
+            'title'       => $request->title,
             'description' => $request->description,
-            'image' => $imagePath,
-            'link' => $request->link,
+            'image'       => $imagePath,
+            'link'        => $request->link,
+            'role'        => $request->role,
         ]);
 
         return redirect()->route('portfolios.index')->with('success', 'Portofolio berhasil ditambahkan!');

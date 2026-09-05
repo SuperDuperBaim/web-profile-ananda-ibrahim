@@ -54,15 +54,15 @@ return [
     'skillGroups' => [
         [
             'title' => 'Frontend',
-            'skills' => ['React', 'Next.js', 'TypeScript', 'HTML', 'CSS', 'Tailwind CSS'],
+            'skills' => ['HTML', 'CSS', 'Tailwind CSS', 'Next.js', 'Flutter'],
         ],
         [
             'title' => 'Backend',
-            'skills' => ['PHP', 'Laravel', 'Node.js', 'Express'],
+            'skills' => ['PHP', 'Laravel'],
         ],
         [
             'title' => 'Database',
-            'skills' => ['MySQL', 'PostgreSQL', 'SQLite'],
+            'skills' => ['MySQL', 'SQLite'],
         ],
         [
             'title' => 'Tools',

@@ -13,7 +13,13 @@
                 </div>
                 <div>
                     <x-input-label for="role" value="Peran (Role)" />
-                    <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" required />
+                    <select id="role" name="role" required
+                        class="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm text-foreground shadow-sm transition-colors focus:border-foreground/30 focus:outline-none focus:ring-1 focus:ring-foreground/20">
+                        <option value="">-- Pilih Role --</option>
+                        @foreach ($roles as $role)
+                            <option value="{{ $role }}">{{ $role }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div>
                     <x-input-label for="company" value="Perusahaan" />

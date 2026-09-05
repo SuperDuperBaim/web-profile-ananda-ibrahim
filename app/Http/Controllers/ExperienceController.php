@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
+    public const ROLES = [
+        'Frontend Developer',
+        'Backend Developer',
+        'Fullstack Developer',
+        'UI/UX Designer',
+    ];
+
     public function index()
     {
         $experiences = Experience::all();
@@ -15,17 +22,17 @@ class ExperienceController extends Controller
 
     public function create()
     {
-        return view('experiences.create');
+        return view('experiences.create', ['roles' => self::ROLES]);
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'period' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
-            'company' => 'required|string|max:255',
+            'period'      => 'required|string|max:255',
+            'role'        => 'required|string|in:' . implode(',', self::ROLES),
+            'company'     => 'required|string|max:255',
             'description' => 'required|string',
-            'tech' => 'nullable|string',
+            'tech'        => 'nullable|string',
         ]);
 
         if (!empty($validated['tech'])) {

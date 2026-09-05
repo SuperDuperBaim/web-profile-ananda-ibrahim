@@ -99,9 +99,13 @@
     <!-- Footer: User & Logout -->
     <div class="border-t border-border p-3">
         <div class="flex items-center gap-3 rounded-lg px-3 py-2">
-            <div class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-sm font-medium text-foreground">
-                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-            </div>
+            @if (Auth::user()->avatar)
+                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="h-8 w-8 rounded-full object-cover border border-border shrink-0">
+            @else
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-sm font-medium text-foreground shrink-0">
+                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                </div>
+            @endif
             <div class="flex-1 min-w-0">
                 <p class="truncate text-sm font-medium text-foreground">{{ Auth::user()->name }}</p>
                 <p class="truncate text-xs text-muted-foreground">{{ Auth::user()->email }}</p>

@@ -16,8 +16,21 @@
                             <x-text-input id="title" name="title" type="text" class="mt-1 block w-full" required autofocus />
                         </div>
                         <div>
+                            <x-input-label for="role" value="Role / Kategori" />
+                            <select id="role" name="role" class="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm text-foreground shadow-sm transition-colors focus:border-foreground/30 focus:outline-none focus:ring-1 focus:ring-foreground/20">
+                                <option value="">-- Pilih Role --</option>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role }}">{{ $role }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div>
                             <x-input-label for="description" value="Deskripsi" />
                             <textarea id="description" name="description" rows="4" class="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm text-foreground placeholder-muted-foreground shadow-sm transition-colors focus:border-foreground/30 focus:outline-none focus:ring-1 focus:ring-foreground/20" required></textarea>
+                        </div>
+                        <div>
+                            <x-input-label for="link" value="Link Proyek (Opsional)" />
+                            <x-text-input id="link" name="link" type="url" class="mt-1 block w-full" placeholder="https://github.com/..." />
                         </div>
                         <div>
                             <x-input-label for="image" value="Gambar" />

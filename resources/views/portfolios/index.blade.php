@@ -20,19 +20,41 @@
                         <thead>
                             <tr class="border-b border-border">
                                 <th class="py-3 px-4 font-semibold text-muted-foreground">Judul</th>
+                                <th class="py-3 px-4 font-semibold text-muted-foreground">Role</th>
                                 <th class="py-3 px-4 font-semibold text-muted-foreground">Deskripsi</th>
                                 <th class="py-3 px-4 font-semibold text-muted-foreground">Gambar</th>
+                                <th class="py-3 px-4 font-semibold text-muted-foreground">Link</th>
                                 <th class="py-3 px-4 font-semibold text-muted-foreground">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($portfolios as $portfolio)
                                 <tr class="border-b border-border/50 hover:bg-muted/50 transition-colors">
-                                    <td class="py-3 px-4 text-foreground">{{ $portfolio->title }}</td>
-                                    <td class="py-3 px-4 text-muted-foreground">{{ Str::limit($portfolio->description, 50) }}</td>
+                                    <td class="py-3 px-4 text-foreground font-medium">{{ $portfolio->title }}</td>
+                                    <td class="py-3 px-4">
+                                        @if($portfolio->role)
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-muted text-foreground border border-border">
+                                                {{ $portfolio->role }}
+                                            </span>
+                                        @else
+                                            <span class="text-xs text-muted-foreground">-</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-3 px-4 text-muted-foreground">{{ Str::limit($portfolio->description, 40) }}</td>
                                     <td class="py-3 px-4">
                                         @if($portfolio->image)
-                                            <img src="{{ asset('storage/' . $portfolio->image) }}" class="w-16 h-16 object-cover rounded-md border border-border">
+                                            <img src="{{ asset('storage/' . $portfolio->image) }}" class="w-12 h-12 object-cover rounded-md border border-border">
+                                        @else
+                                            <span class="text-xs text-muted-foreground">Tidak ada</span>
+                                        @endif
+                                    </td>
+                                    <td class="py-3 px-4">
+                                        @if($portfolio->link)
+                                            <a href="{{ $portfolio->link }}" target="_blank" rel="noopener noreferrer" class="text-xs text-blue-400 hover:underline truncate max-w-[120px] inline-block">
+                                                Lihat
+                                            </a>
+                                        @else
+                                            <span class="text-xs text-muted-foreground">-</span>
                                         @endif
                                     </td>
                                     <td class="py-3 px-4">
@@ -46,7 +68,7 @@
                             @endforeach
                             @if($portfolios->isEmpty())
                                 <tr>
-                                    <td colspan="4" class="py-8 text-center text-muted-foreground">Belum ada portofolio.</td>
+                                    <td colspan="6" class="py-8 text-center text-muted-foreground">Belum ada portofolio.</td>
                                 </tr>
                             @endif
                         </tbody>

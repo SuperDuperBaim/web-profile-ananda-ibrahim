@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    protected $fillable = ['title', 'description', 'image', 'link'];
+    protected $fillable = ['title', 'description', 'image', 'link', 'role'];
 }

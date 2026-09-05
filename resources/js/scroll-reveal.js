@@ -1,31 +1,31 @@
 export function initScrollReveal() {
-  const revealAll = () =>
-    document
-      .querySelectorAll('.reveal')
-      .forEach((el) => el.classList.add('visible'));
+  const elements = Array.from(document.querySelectorAll('.reveal'));
+  if (!elements.length) return;
 
-  if (
-    typeof IntersectionObserver === 'undefined' ||
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  ) {
-    revealAll();
-    return;
+  function checkReveal() {
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const triggerBottom = windowHeight - 60; // 60px dari bawah layar
+
+    elements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const isInView = rect.top < triggerBottom && rect.bottom > 0;
+      const isBelowView = rect.top >= triggerBottom;
+
+      if (isInView) {
+        // Elemen masuk ke area tonton -> munculkan animasi pop-up
+        el.classList.add('visible');
+      } else if (isBelowView) {
+        // Elemen di bawah area tonton -> pastikan sembunyi agar bisa pop-up saat di-scroll ke bawah
+        el.classList.remove('visible');
+      }
+      // Jika di atas area tonton -> biarkan tetap 'visible'
+    });
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) {
-          continue;
-        }
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    },
-    { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
-  );
+  // Jalankan pemeriksaan langsung saat pertama dipanggil
+  checkReveal();
 
-  document
-    .querySelectorAll('.reveal')
-    .forEach((el) => observer.observe(el));
+  // Dan setiap kali scroll / resize
+  window.addEventListener('scroll', checkReveal, { passive: true });
+  window.addEventListener('resize', checkReveal, { passive: true });
 }
