@@ -2,11 +2,11 @@
 
 return [
     'site' => [
-        'name' => 'Baim',
-        'fullName' => 'Baim',
-        'title' => 'Mahasiswa Universitas Darma Persada',
-        'summary' => 'Saya adalah mahasiswa S1 Teknologi Informasi yang tertarik pada pengembangan produk digital, frontend development, dan teknologi.',
-        'intro' => 'Saya adalah mahasiswa S1 Teknologi Informasi yang tertarik pada pengembangan produk digital, frontend development, dan teknologi.',
+        'name' => 'Ananda Ibrahim',
+        'fullName' => 'Ananda Ibrahim Hilal Syafrudin',
+        'title' => 'Web & Mobile Developer',
+        'summary' => 'Mahasiswa Teknologi Informasi di Universitas Darma Persada yang tertarik dalam merancang serta mengembangkan aplikasi web dan mobile.',
+        'intro' => 'Mahasiswa Teknologi Informasi di Universitas Darma Persada yang tertarik dalam merancang serta mengembangkan aplikasi web dan mobile.',
         'about' => 'Nama saya Ananda Ibrahim Hilal Syafrudin, Mahasiswa S1 Teknologi Informasi di Universitas Darma Persada. Saya tertarik dengan bagaimana teknologi bekerja, pengembangan aplikasi, dan pembuatan produk digital.',
     ],
 
