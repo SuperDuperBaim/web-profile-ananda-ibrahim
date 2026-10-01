@@ -24,7 +24,7 @@
             </p>
         </div>
 
-        <div class="flex-shrink-0 flex items-center justify-center">
+        <div class="flex-shrink-0 flex items-center justify-center md:-translate-x-6">
             @php
                 $photoSrc = !empty($avatar) 
                     ? (str_starts_with($avatar, 'http') ? $avatar : asset('storage/' . $avatar)) 
@@ -33,7 +33,7 @@
             <img
                 src="{{ $photoSrc }}"
                 alt="{{ $site['name'] }}"
-                class="reveal h-48 w-48 sm:h-56 sm:w-56 md:h-60 md:w-60 rounded-full object-cover border border-border/60 shadow-2xl"
+                class="reveal h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 rounded-full object-cover border border-border/60 shadow-2xl shrink-0"
                 style="--reveal-delay: 0ms;"
             />
         </div>
