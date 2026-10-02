@@ -45,7 +45,7 @@
                             </h3>
                             @if (!empty($project->role))
                                 <div>
-                                    <span class="inline-block rounded-full border border-border bg-muted/60 px-2 py-0.5 text-[11px] text-muted-foreground">
+                                    <span class="-ml-2 inline-block rounded-full border border-border bg-muted/60 px-2 py-0.5 text-[11px] text-muted-foreground">
                                         {{ $project->role }}
                                     </span>
                                 </div>
@@ -68,7 +68,7 @@
                             }
                         @endphp
                         @if(!empty($techs))
-                            <div class="flex flex-wrap gap-1.5 pt-1">
+                            <div class="-ml-2.5 flex flex-wrap gap-1.5 pt-1">
                                 @foreach ($techs as $tech)
                                     <span class="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground transition-colors group-hover:border-foreground/30">
                                         {{ $tech }}
