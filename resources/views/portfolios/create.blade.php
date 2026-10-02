@@ -25,14 +25,21 @@
                 </div>
                 <div>
                     <x-input-label for="description" value="Deskripsi" />
-                    <textarea id="description" name="description" rows="4" required placeholder="Jelaskan fitur dan teknologi yang kamu gunakan pada proyek ini..." class="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm text-foreground placeholder-muted-foreground shadow-sm transition-colors focus:border-foreground/30 focus:outline-none focus:ring-1 focus:ring-foreground/20"></textarea>
+                    <textarea id="description" name="description" rows="4" required placeholder="Jelaskan fitur dan teknologi yang kamu gunakan pada proyek ini..." class="mt-1 block w-full rounded-lg border border-border bg-muted px-3 py-2 text-sm text-foreground placeholder-muted-foreground shadow-sm transition-colors focus:border-foreground/30 focus:outline-none focus:ring-1 focus:ring-foreground/20">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
+                    <x-input-label for="tech" value="Tech Stack (Pisahkan dengan koma, contoh: Laravel, HTML, Tailwind CSS)" />
+                    <x-text-input id="tech" name="tech" type="text" class="mt-1 block w-full" placeholder="Laravel, HTML, Tailwind CSS" value="{{ old('tech') }}" />
+                    @error('tech')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div>
                     <x-input-label for="link" value="Link Proyek (Opsional)" />
-                    <x-text-input id="link" name="link" type="url" class="mt-1 block w-full" placeholder="https://github.com/..." />
+                    <x-text-input id="link" name="link" type="url" class="mt-1 block w-full" placeholder="https://github.com/..." value="{{ old('link') }}" />
                     @error('link')
                         <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                     @enderror

@@ -44,6 +44,18 @@
                 </div>
 
                 <div>
+                    <x-input-label for="tech" value="Tech Stack (Pisahkan dengan koma, contoh: Laravel, HTML, Tailwind CSS)" />
+                    @php
+                        $techVal = is_array($portfolio->tech) ? implode(', ', $portfolio->tech) : ($portfolio->tech ?? '');
+                    @endphp
+                    <x-text-input id="tech" name="tech" type="text" class="mt-1 block w-full"
+                        placeholder="Laravel, HTML, Tailwind CSS" value="{{ old('tech', $techVal) }}" />
+                    @error('tech')
+                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <x-input-label for="link" value="Link Proyek (Opsional)" />
                     <x-text-input id="link" name="link" type="url" class="mt-1 block w-full"
                         placeholder="https://github.com/..." value="{{ old('link', $portfolio->link) }}" />

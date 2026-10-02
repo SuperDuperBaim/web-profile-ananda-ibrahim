@@ -34,6 +34,7 @@ class PortfolioController extends Controller
             'image_url'   => 'nullable|url|max:1000',
             'link'        => 'nullable|url',
             'role'        => 'nullable|string|in:' . implode(',', self::ROLES),
+            'tech'        => 'nullable|string',
         ]);
 
         $imagePath = null;
@@ -43,12 +44,18 @@ class PortfolioController extends Controller
             $imagePath = $request->image_url;
         }
 
+        $techArray = [];
+        if (!empty($request->tech)) {
+            $techArray = array_values(array_filter(array_map('trim', explode(',', $request->tech))));
+        }
+
         Portfolio::create([
             'title'       => $request->title,
             'description' => $request->description,
             'image'       => $imagePath,
             'link'        => $request->link,
             'role'        => $request->role,
+            'tech'        => $techArray,
         ]);
 
         return redirect()->route('portfolios.index')->with('success', 'Portofolio berhasil ditambahkan!');
@@ -68,6 +75,7 @@ class PortfolioController extends Controller
             'image_url'   => 'nullable|url|max:1000',
             'link'        => 'nullable|url',
             'role'        => 'nullable|string|in:' . implode(',', self::ROLES),
+            'tech'        => 'nullable|string',
         ]);
 
         $imagePath = $portfolio->image; // keep existing
@@ -86,12 +94,18 @@ class PortfolioController extends Controller
             $imagePath = $request->image_url;
         }
 
+        $techArray = [];
+        if (!empty($request->tech)) {
+            $techArray = array_values(array_filter(array_map('trim', explode(',', $request->tech))));
+        }
+
         $portfolio->update([
             'title'       => $request->title,
             'description' => $request->description,
             'image'       => $imagePath,
             'link'        => $request->link,
             'role'        => $request->role,
+            'tech'        => $techArray,
         ]);
 
         return redirect()->route('portfolios.index')->with('success', 'Portofolio berhasil diperbarui!');
