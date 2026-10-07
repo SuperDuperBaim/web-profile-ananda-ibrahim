@@ -30,7 +30,7 @@
                         </div>
                         <div>
                             <x-input-label for="link" value="Link Proyek (Opsional)" />
-                            <x-text-input id="link" name="link" type="url" class="mt-1 block w-full" placeholder="https://github.com/..." />
+                            <x-text-input id="link" name="link" type="text" class="mt-1 block w-full" placeholder="https://github.com/... atau https://example.xo.je" />
                         </div>
                         <div>
                             <x-input-label for="image" value="Gambar" />

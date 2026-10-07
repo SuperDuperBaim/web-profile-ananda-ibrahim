@@ -31,8 +31,8 @@ class PortfolioController extends Controller
             'title'       => 'required|string|max:255',
             'description' => 'required',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'image_url'   => 'nullable|url|max:1000',
-            'link'        => 'nullable|url',
+            'image_url'   => 'nullable|string|max:1000',
+            'link'        => 'nullable|string|max:500',
             'role'        => 'nullable|string|in:' . implode(',', self::ROLES),
             'tech'        => 'nullable|string',
         ]);
@@ -41,7 +41,7 @@ class PortfolioController extends Controller
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('portfolios', 'public');
         } elseif ($request->filled('image_url')) {
-            $imagePath = $request->image_url;
+            $imagePath = $this->normalizeUrl($request->image_url);
         }
 
         $techArray = [];
@@ -53,7 +53,7 @@ class PortfolioController extends Controller
             'title'       => $request->title,
             'description' => $request->description,
             'image'       => $imagePath,
-            'link'        => $request->link,
+            'link'        => $request->filled('link') ? $this->normalizeUrl($request->link) : null,
             'role'        => $request->role,
             'tech'        => $techArray,
         ]);
@@ -72,8 +72,8 @@ class PortfolioController extends Controller
             'title'       => 'required|string|max:255',
             'description' => 'required',
             'image'       => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'image_url'   => 'nullable|url|max:1000',
-            'link'        => 'nullable|url',
+            'image_url'   => 'nullable|string|max:1000',
+            'link'        => 'nullable|string|max:500',
             'role'        => 'nullable|string|in:' . implode(',', self::ROLES),
             'tech'        => 'nullable|string',
         ]);
@@ -91,7 +91,7 @@ class PortfolioController extends Controller
             if ($imagePath && !str_starts_with($imagePath, 'http')) {
                 \Illuminate\Support\Facades\Storage::disk('public')->delete($imagePath);
             }
-            $imagePath = $request->image_url;
+            $imagePath = $this->normalizeUrl($request->image_url);
         }
 
         $techArray = [];
@@ -103,7 +103,7 @@ class PortfolioController extends Controller
             'title'       => $request->title,
             'description' => $request->description,
             'image'       => $imagePath,
-            'link'        => $request->link,
+            'link'        => $request->filled('link') ? $this->normalizeUrl($request->link) : null,
             'role'        => $request->role,
             'tech'        => $techArray,
         ]);
@@ -118,5 +118,18 @@ class PortfolioController extends Controller
         }
         $portfolio->delete();
         return redirect()->route('portfolios.index')->with('success', 'Portofolio berhasil dihapus!');
+    }
+
+    /**
+     * Pastikan URL memiliki protokol https:// atau http://.
+     * Jika tidak ada, tambahkan https:// secara otomatis.
+     */
+    private function normalizeUrl(string $url): string
+    {
+        $url = trim($url);
+        if (!preg_match('/^https?:\/\//i', $url)) {
+            $url = 'https://' . $url;
+        }
+        return $url;
     }
 }
