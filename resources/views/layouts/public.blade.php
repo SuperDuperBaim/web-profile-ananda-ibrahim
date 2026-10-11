@@ -42,6 +42,7 @@
         <main id="main-content" class="transition-[margin] duration-300 ease-in-out pt-14 md:pt-0" style="margin-left:0">
             @yield('content')
         </main>
+        <x-chatbot-widget />
         @vite('resources/js/sidebar.js')
     </body>
 </html>

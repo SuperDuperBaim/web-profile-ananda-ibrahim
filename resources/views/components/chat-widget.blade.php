@@ -1,0 +1,1 @@
+@include('components.chatbot-widget')

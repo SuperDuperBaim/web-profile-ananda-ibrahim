@@ -3,6 +3,7 @@
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChatbotController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,6 +49,9 @@ Route::get('/', function () {
         'avatar' => \App\Models\User::first()?->avatar,
     ]);
 })->middleware(\App\Http\Middleware\TrackVisitor::class);
+
+Route::get('/chatbot', [ChatbotController::class, 'index']);
+Route::post('/chatbot/send', [ChatbotController::class, 'sendMessage']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
