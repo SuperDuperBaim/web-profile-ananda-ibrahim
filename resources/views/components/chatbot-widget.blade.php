@@ -1,5 +1,5 @@
 <!-- Floating Chatbot Widget -->
-<div id="ai-chatbot-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; font-family: system-ui, -apple-system, sans-serif;">
+<div id="ai-chatbot-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; font-family: 'Courier New', Courier, monospace;">
     
     <!-- Chat Window Popup -->
     <div id="chat-popup-window" 
@@ -58,16 +58,8 @@
             </div>
         </div>
 
-        <!-- Tombol Rekomendasi Pertanyaan (Quick Chips 2x2 Grid) -->
-        <div id="widget-quick-chips" style="padding: 8px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: rgba(24, 24, 27, 0.7); border-top: 1px solid rgba(255, 255, 255, 0.06);">
-            <button type="button" onclick="window.sendQuickMessage('Siapa Ananda Ibrahim?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">👋 Siapa Ananda?</button>
-            <button type="button" onclick="window.sendQuickMessage('Apa saja proyek unggulannya?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">🚀 Proyek Unggulan</button>
-            <button type="button" onclick="window.sendQuickMessage('Apa keahlian & tech stacknya?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">💻 Keahlian Tech</button>
-            <button type="button" onclick="window.sendQuickMessage('Bagaimana cara menghubungi Ananda?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">✉️ Kontak Ananda</button>
-        </div>
-
-        <!-- Typing Indicator -->
-        <div id="widget-typing-indicator" style="display: none; padding: 6px 16px; font-size: 11px; color: #a1a1aa; align-items: center; gap: 8px;">
+        <!-- Typing Indicator (Sekarang Di Atas Quick Chips) -->
+        <div id="widget-typing-indicator" style="display: none; padding: 8px 16px; font-size: 11.5px; color: #a1a1aa; align-items: center; gap: 8px; background: rgba(24, 24, 27, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.05);">
             <div style="display: flex; gap: 4px;">
                 <span class="chat-dot"></span>
                 <span class="chat-dot" style="animation-delay: 0.15s;"></span>
@@ -76,11 +68,19 @@
             <span>AI sedang mengetik...</span>
         </div>
 
+        <!-- Tombol Rekomendasi Pertanyaan (Quick Chips 2x2 Grid) -->
+        <div id="widget-quick-chips" style="padding: 8px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: rgba(24, 24, 27, 0.7); border-top: 1px solid rgba(255, 255, 255, 0.06);">
+            <button type="button" onclick="window.sendQuickMessage('Siapa Ananda Ibrahim?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">👋 Siapa Ananda?</button>
+            <button type="button" onclick="window.sendQuickMessage('Apa saja proyek unggulannya?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">🚀 Proyek Unggulan</button>
+            <button type="button" onclick="window.sendQuickMessage('Apa keahlian & tech stacknya?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">💻 Keahlian Tech</button>
+            <button type="button" onclick="window.sendQuickMessage('Bagaimana cara menghubungi Ananda?')" style="background: #27272a; color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.25); padding: 6px 8px; border-radius: 10px; font-size: 11.5px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 4px;" onmouseover="this.style.background='#1e3a8a'; this.style.borderColor='#3b82f6'" onmouseout="this.style.background='#27272a'; this.style.borderColor='rgba(59, 130, 246, 0.25)'">✉️ Kontak Ananda</button>
+        </div>
+
         <!-- Input Area -->
         <div style="padding: 12px; background: rgba(24, 24, 27, 0.95); border-top: 1px solid rgba(255, 255, 255, 0.08);">
             <form id="widget-chat-form" style="display: flex; align-items: center; gap: 8px; margin: 0;">
                 <input type="text" id="widget-user-input" placeholder="Tanya sesuatu ke AI..." autocomplete="off" required
-                       style="flex: 1; background: #27272a; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 8px 12px; font-size: 13px; color: #fff; outline: none; transition: border-color 0.2s;"
+                       style="flex: 1; background: #27272a; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; padding: 8px 12px; font-size: 13px; font-family: inherit; color: #fff; outline: none; transition: border-color 0.2s;"
                        onfocus="this.style.borderColor='#3b82f6'"
                        onblur="this.style.borderColor='rgba(255, 255, 255, 0.12)'">
                 <button type="submit" id="widget-send-btn" title="Kirim"
