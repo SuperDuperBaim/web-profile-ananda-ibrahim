@@ -16,7 +16,6 @@ return [
         ['label' => 'Projects', 'href' => '#projects'],
         ['label' => 'Skills', 'href' => '#skills'],
         ['label' => 'Contact', 'href' => '#contact'],
-        ['label' => 'Chatbot AI', 'href' => '/chatbot'],
     ],
 
     'experiences' => [

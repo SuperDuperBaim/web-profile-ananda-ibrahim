@@ -23,15 +23,6 @@
             </div>
             
             <div style="display: flex; align-items: center; gap: 4px;">
-                <!-- Open Full Page -->
-                <a href="{{ url('/chatbot') }}" target="_blank" title="Buka di tab baru"
-                   style="padding: 6px; border-radius: 8px; color: #a1a1aa; display: flex; align-items: center; justify-content: center; text-decoration: none; cursor: pointer; transition: background 0.2s;"
-                   onmouseover="this.style.background='rgba(255,255,255,0.08)'; this.style.color='#fff'"
-                   onmouseout="this.style.background='transparent'; this.style.color='#a1a1aa'">
-                    <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                    </svg>
-                </a>
                 <!-- Close Button -->
                 <button type="button" id="close-chatbot-btn" title="Tutup"
                         style="padding: 6px; border-radius: 8px; color: #a1a1aa; background: transparent; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;"
